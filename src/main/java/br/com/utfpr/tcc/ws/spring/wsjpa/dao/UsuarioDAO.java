@@ -15,7 +15,19 @@ public class UsuarioDAO {
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public Usuario busca(String matricula) {
+	public Usuario busca(int matricula) {
 		return manager.find(Usuario.class, matricula);
+	}
+	
+	public void atualizar(Usuario usuario) {
+		manager.merge(usuario);
+	}
+	
+	public void inserir(Usuario usuario) {
+		manager.persist(usuario);
+	}
+	
+	public void remover(Usuario usuario) {
+		manager.remove(usuario);
 	}
 }

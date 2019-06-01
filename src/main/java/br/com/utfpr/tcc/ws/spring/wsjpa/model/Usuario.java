@@ -1,21 +1,26 @@
 package br.com.utfpr.tcc.ws.spring.wsjpa.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Usuario {
 
 	@Id
-	private String matricula;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int matricula;
 	
 	private String senha;
+	
+	private int contador;
 
-	public String getMatricula() {
+	public int getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(String matricula) {
+	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
 
@@ -27,6 +32,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
 	public boolean mesmaSenha(String senha) {
 		return this.senha.equals(senha);
 	}
